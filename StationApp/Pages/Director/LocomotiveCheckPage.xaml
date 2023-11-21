@@ -1,0 +1,59 @@
+﻿<Page x:Class="StationApp.Pages.Director.LocomotiveCheckPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StationApp.Pages.Director"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Локомотивы">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Name="LocomotiveGrid" AutoGenerateColumns="False" Grid.Column="0" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер локомотива"
+                                    Width="Auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Дата прибытия на станцию"
+                                    Width="Auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding ArrivalDate}"/>
+                <DataGridTextColumn Header="Дата отправления со станции"
+                                    Width="Auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding DepartureDate}"/>
+                <DataGridTextColumn Header="Количество маршрутов"
+                                    Width="Auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding RouteQuantity}"/>
+                <DataGridTextColumn Header="Водитель локомотива"
+                                    Width="auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding LocomotiveDriver.Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}">Фильтры</TextBlock>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Дата прибытия:</TextBlock>
+            <DatePicker SelectedDateChanged="DeparturePicker_SelectedDateChanged" Width="180" Name="DeparturePicker"></DatePicker>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Дата выезда:</TextBlock>
+            <DatePicker SelectedDateChanged="ArrialPicker_SelectedDateChanged" Name="ArrialPicker" Width="180"></DatePicker>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Количество маршрутов:</TextBlock>
+            <TextBox TextChanged="TxbQuantity_TextChanged" Name="TxbQuantity" Style="{StaticResource AuthorizationBox}" Width="180"></TextBox>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Водитель:</TextBlock>
+            <ComboBox SelectionChanged="CmbDriver_SelectionChanged" Name="CmbDriver" Style="{StaticResource FiltrationBox}"></ComboBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Grid.Column="1" Margin="10">
+            <Button Name="BtnAll" Click="BtnAll_Click" Style="{StaticResource Button}" Width="200">Сбросить фильтры</Button>
+            <Button Name="BtnBack" Click="BtnBack_Click" Style="{StaticResource Button}" Width="200">Назад</Button>
+        </StackPanel>
+    </Grid>
+</Page>

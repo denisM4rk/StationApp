@@ -1,0 +1,27 @@
+﻿<Window x:Class="StationApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StationApp"
+        mc:Ignorable="d"
+        Title="ИС Железнодорожная станция" Height="900" Width="1250" MinHeight="900" MinWidth="1250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Background="IndianRed" Orientation="Horizontal"></StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Content.Title, ElementName=FrmMain}"
+                           Foreground="White"
+                           FontSize="30" 
+                           FontWeight="Bold"/>
+        </StackPanel>
+
+        <Frame Name="FrmMain"
+               NavigationUIVisibility="Hidden"
+               Grid.Row="1"/>
+    </Grid>
+</Window>

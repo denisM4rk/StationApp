@@ -1,0 +1,61 @@
+﻿<Page x:Class="StationApp.Pages.Director.TrainCheckPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StationApp.Pages.Director"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="Перечень поездов на маршруте">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Name="TrainGrid" Grid.Column="0" Margin="10" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер поезда"
+                                    Width="Auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding TrainNumber}"/>
+                <DataGridTextColumn Header="Цена"
+                                    Width="Auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Дата отправления"
+                                    Width="Auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding DepartureDate}"/>
+                <DataGridTextColumn Header="Дата прибытия"
+                                    Width="Auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding ArrivalDate}"/>
+                <DataGridTextColumn Header="Место назначения"
+                                    Width="auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding Route.ArrivalPlace}"/>
+                <DataGridTextColumn Header="Id локомотива"
+                                    Width="auto"
+                                    IsReadOnly="True"
+                                    Binding="{Binding IdLocomotive}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10">
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}">Фильтры</TextBlock>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Дата отправления:</TextBlock>
+            <DatePicker Name="DatePicker" Width="180" SelectedDateChanged="DatePicker_SelectedDateChanged"></DatePicker>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Место назначения:</TextBlock>
+            <ComboBox Name="CmbRoute" SelectionChanged="CmbRoute_SelectionChanged" Style="{StaticResource FiltrationBox}" Width="180"></ComboBox>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Цена:</TextBlock>
+            <TextBox TextChanged="TxbPrice_TextChanged" Name="TxbPrice" Style="{StaticResource AuthorizationBox}" Width="180"></TextBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Grid.Column="1" Margin="10">
+            <Button Name="BtnClear" Click="BtnClear_Click" Style="{StaticResource Button}" Width="200">Сбросить фильтры</Button>
+            <Button Name="BtnBack" Click="BtnBack_Click" Style="{StaticResource Button}" Width="200">Назад</Button>
+        </StackPanel>
+    </Grid>
+</Page>

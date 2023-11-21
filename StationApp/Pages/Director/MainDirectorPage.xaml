@@ -1,0 +1,63 @@
+﻿<Page x:Class="StationApp.Pages.Director.MainDirectorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StationApp.Pages.Director"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1100"
+      Title="Страница начальника">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" HorizontalAlignment="Center">Работники станции</TextBlock>
+            <Button Name="BtnEmployeeCheck" Click="BtnEmployeeCheck_Click" Style="{StaticResource Button}">Работники станции</Button>
+            <Button Name="BtnBrigadeCheck" Click="BtnBrigadeCheck_Click" Style="{StaticResource Button}">Бригады, отделы</Button>
+            <Button Name="BtnDriversCheck" Click="BtnDriversCheck_Click" Style="{StaticResource Button}">Водители</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" HorizontalAlignment="Center" Width="auto">Транспорт</TextBlock>
+            <Button Name="BtnLocomotiveCheck" Click="BtnLocomotiveCheck_Click" Style="{StaticResource Button}">Локомотивы</Button>
+            <Button Name="BtnInspectionCheck" Click="BtnInspectionCheck_Click" Style="{StaticResource Button}">Техосмотр локомотивов</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical">
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" HorizontalAlignment="Center" Width="auto">Билеты</TextBlock>
+            <Button Name="BtnTicketsCheck" Click="BtnTicketsCheck_Click" Style="{StaticResource Button}">Билеты</Button>
+            <Button Name="BtnUnboughtTicketsCheck" Click="BtnUnboughtTicketsCheck_Click" Style="{StaticResource Button}">Непроданные билеты</Button>
+            <Button Name="BtnPassedTicketsCheck" Click="BtnPassedTicketsCheck_Click" Style="{StaticResource Button}">Сданные билеты</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" HorizontalAlignment="Center" Width="auto">Рейсы и маршруты</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <Button Name="BtnTrainCheck" Click="BtnTrainCheck_Click" Style="{StaticResource Button}">Перечень поездов</Button>
+                    <Button Name="BtnDelayedTripsCheck" Click="BtnDelayedTripsCheck_Click" Style="{StaticResource Button}">Задержанные рейсы</Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Button Name="BtnCancelledTripsCheck" Click="BtnCancelledTripsCheck_Click" Style="{StaticResource Button}">Отменённые рейсы</Button>
+                    <Button Name="BtnRoute" Click="BtnRoute_Click" Style="{StaticResource Button}">Все маршруты</Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Height="220" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" HorizontalAlignment="Center" Width="auto">Пассажиры</TextBlock>
+            <Button Name="BtnPassengersCheck" Click="BtnPassengersCheck_Click" Style="{StaticResource Button}">Все пассажиры</Button>
+        </StackPanel>
+
+        <Button Name="BtnExit" Click="BtnExit_Click" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource Button}">Выход</Button>
+    </Grid>
+</Page>

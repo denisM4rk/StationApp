@@ -1,0 +1,1019 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище DbStationModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brigade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdLocomotive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CancelledTrip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRoute" Type="int" Nullable="false" />
+          <Property Name="IdTrain" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DelayedTrip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="TicketsQuantity" Type="int" Nullable="false" />
+          <Property Name="IdRoute" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Salary" Type="int" Nullable="false" />
+          <Property Name="WorkExperience" Type="int" Nullable="false" />
+          <Property Name="IdBrigade" Type="int" Nullable="false" />
+          <Property Name="IdDepartment" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inspection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOfInspection" Type="date" Nullable="false" />
+          <Property Name="LocomotiveAge" Type="int" Nullable="false" />
+          <Property Name="IdLocomotive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locomotive">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartureDate" Type="date" Nullable="false" />
+          <Property Name="ArrivalDate" Type="date" Nullable="false" />
+          <Property Name="RouteQuantity" Type="int" Nullable="false" />
+          <Property Name="IdLocomotiveDriver" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocomotiveDriver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="MedicalInspection" Type="date" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Salary" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Baggage" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeparturePlace" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ArrivalPlace" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdRouteCategory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RouteCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="ArePassed" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="AreUnbought" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="IdRoute" Type="int" Nullable="false" />
+          <Property Name="IdPassenger" Type="int" />
+        </EntityType>
+        <EntityType Name="Train">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="DepartureDate" Type="date" Nullable="false" />
+          <Property Name="ArrivalDate" Type="date" Nullable="false" />
+          <Property Name="IdRoute" Type="int" Nullable="false" />
+          <Property Name="IdLocomotive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Brigade_Locomotive">
+          <End Role="Locomotive" Type="Self.Locomotive" Multiplicity="1" />
+          <End Role="Brigade" Type="Self.Brigade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locomotive">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Brigade">
+              <PropertyRef Name="IdLocomotive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CancelledTrip_Route">
+          <End Role="Route" Type="Self.Route" Multiplicity="1" />
+          <End Role="CancelledTrip" Type="Self.CancelledTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CancelledTrip">
+              <PropertyRef Name="IdRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CancelledTrip_Train">
+          <End Role="Train" Type="Self.Train" Multiplicity="1" />
+          <End Role="CancelledTrip" Type="Self.CancelledTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Train">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CancelledTrip">
+              <PropertyRef Name="IdTrain" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DelayedTrip_Route">
+          <End Role="Route" Type="Self.Route" Multiplicity="1" />
+          <End Role="DelayedTrip" Type="Self.DelayedTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DelayedTrip">
+              <PropertyRef Name="IdRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Brigade">
+          <End Role="Brigade" Type="Self.Brigade" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brigade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdBrigade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inspection_Locomotive">
+          <End Role="Locomotive" Type="Self.Locomotive" Multiplicity="1" />
+          <End Role="Inspection" Type="Self.Inspection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locomotive">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inspection">
+              <PropertyRef Name="IdLocomotive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locomotive_LocomotiveDriver">
+          <End Role="LocomotiveDriver" Type="Self.LocomotiveDriver" Multiplicity="1" />
+          <End Role="Locomotive" Type="Self.Locomotive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocomotiveDriver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Locomotive">
+              <PropertyRef Name="IdLocomotiveDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Route_RouteCategory">
+          <End Role="RouteCategory" Type="Self.RouteCategory" Multiplicity="1" />
+          <End Role="Route" Type="Self.Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Route">
+              <PropertyRef Name="IdRouteCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Passenger">
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="0..1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IdPassenger" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Route">
+          <End Role="Route" Type="Self.Route" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IdRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Train_Locomotive">
+          <End Role="Locomotive" Type="Self.Locomotive" Multiplicity="1" />
+          <End Role="Train" Type="Self.Train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locomotive">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Train">
+              <PropertyRef Name="IdLocomotive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Train_Route">
+          <End Role="Route" Type="Self.Route" Multiplicity="1" />
+          <End Role="Train" Type="Self.Train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Train">
+              <PropertyRef Name="IdRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DbStationModelContainer">
+          <EntitySet Name="Brigade" EntityType="Self.Brigade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CancelledTrip" EntityType="Self.CancelledTrip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DelayedTrip" EntityType="Self.DelayedTrip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inspection" EntityType="Self.Inspection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locomotive" EntityType="Self.Locomotive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocomotiveDriver" EntityType="Self.LocomotiveDriver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RouteCategory" EntityType="Self.RouteCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Train" EntityType="Self.Train" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Brigade_Locomotive" Association="Self.FK_Brigade_Locomotive">
+            <End Role="Locomotive" EntitySet="Locomotive" />
+            <End Role="Brigade" EntitySet="Brigade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CancelledTrip_Route" Association="Self.FK_CancelledTrip_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="CancelledTrip" EntitySet="CancelledTrip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CancelledTrip_Train" Association="Self.FK_CancelledTrip_Train">
+            <End Role="Train" EntitySet="Train" />
+            <End Role="CancelledTrip" EntitySet="CancelledTrip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DelayedTrip_Route" Association="Self.FK_DelayedTrip_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="DelayedTrip" EntitySet="DelayedTrip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Brigade" Association="Self.FK_Employee_Brigade">
+            <End Role="Brigade" EntitySet="Brigade" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inspection_Locomotive" Association="Self.FK_Inspection_Locomotive">
+            <End Role="Locomotive" EntitySet="Locomotive" />
+            <End Role="Inspection" EntitySet="Inspection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locomotive_LocomotiveDriver" Association="Self.FK_Locomotive_LocomotiveDriver">
+            <End Role="LocomotiveDriver" EntitySet="LocomotiveDriver" />
+            <End Role="Locomotive" EntitySet="Locomotive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Route_RouteCategory" Association="Self.FK_Route_RouteCategory">
+            <End Role="RouteCategory" EntitySet="RouteCategory" />
+            <End Role="Route" EntitySet="Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Passenger" Association="Self.FK_Ticket_Passenger">
+            <End Role="Passenger" EntitySet="Passenger" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Route" Association="Self.FK_Ticket_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Train_Locomotive" Association="Self.FK_Train_Locomotive">
+            <End Role="Locomotive" EntitySet="Locomotive" />
+            <End Role="Train" EntitySet="Train" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Train_Route" Association="Self.FK_Train_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="Train" EntitySet="Train" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbStationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DbStationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Brigade" EntityType="DbStationModel.Brigade" />
+          <EntitySet Name="CancelledTrip" EntityType="DbStationModel.CancelledTrip" />
+          <EntitySet Name="DelayedTrip" EntityType="DbStationModel.DelayedTrip" />
+          <EntitySet Name="Department" EntityType="DbStationModel.Department" />
+          <EntitySet Name="Employee" EntityType="DbStationModel.Employee" />
+          <EntitySet Name="Inspection" EntityType="DbStationModel.Inspection" />
+          <EntitySet Name="Locomotive" EntityType="DbStationModel.Locomotive" />
+          <EntitySet Name="LocomotiveDriver" EntityType="DbStationModel.LocomotiveDriver" />
+          <EntitySet Name="Passenger" EntityType="DbStationModel.Passenger" />
+          <EntitySet Name="Role" EntityType="DbStationModel.Role" />
+          <EntitySet Name="Route" EntityType="DbStationModel.Route" />
+          <EntitySet Name="RouteCategory" EntityType="DbStationModel.RouteCategory" />
+          <EntitySet Name="sysdiagrams" EntityType="DbStationModel.sysdiagrams" />
+          <EntitySet Name="Ticket" EntityType="DbStationModel.Ticket" />
+          <EntitySet Name="Train" EntityType="DbStationModel.Train" />
+          <EntitySet Name="User" EntityType="DbStationModel.User" />
+          <AssociationSet Name="FK_Brigade_Locomotive" Association="DbStationModel.FK_Brigade_Locomotive">
+            <End Role="Locomotive" EntitySet="Locomotive" />
+            <End Role="Brigade" EntitySet="Brigade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Brigade" Association="DbStationModel.FK_Employee_Brigade">
+            <End Role="Brigade" EntitySet="Brigade" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CancelledTrip_Route" Association="DbStationModel.FK_CancelledTrip_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="CancelledTrip" EntitySet="CancelledTrip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CancelledTrip_Train" Association="DbStationModel.FK_CancelledTrip_Train">
+            <End Role="Train" EntitySet="Train" />
+            <End Role="CancelledTrip" EntitySet="CancelledTrip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DelayedTrip_Route" Association="DbStationModel.FK_DelayedTrip_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="DelayedTrip" EntitySet="DelayedTrip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Department" Association="DbStationModel.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inspection_Locomotive" Association="DbStationModel.FK_Inspection_Locomotive">
+            <End Role="Locomotive" EntitySet="Locomotive" />
+            <End Role="Inspection" EntitySet="Inspection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locomotive_LocomotiveDriver" Association="DbStationModel.FK_Locomotive_LocomotiveDriver">
+            <End Role="LocomotiveDriver" EntitySet="LocomotiveDriver" />
+            <End Role="Locomotive" EntitySet="Locomotive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Train_Locomotive" Association="DbStationModel.FK_Train_Locomotive">
+            <End Role="Locomotive" EntitySet="Locomotive" />
+            <End Role="Train" EntitySet="Train" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Passenger" Association="DbStationModel.FK_Ticket_Passenger">
+            <End Role="Passenger" EntitySet="Passenger" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="DbStationModel.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Route_RouteCategory" Association="DbStationModel.FK_Route_RouteCategory">
+            <End Role="RouteCategory" EntitySet="RouteCategory" />
+            <End Role="Route" EntitySet="Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Route" Association="DbStationModel.FK_Ticket_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Train_Route" Association="DbStationModel.FK_Train_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="Train" EntitySet="Train" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Brigade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdLocomotive" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Locomotive" Relationship="DbStationModel.FK_Brigade_Locomotive" FromRole="Brigade" ToRole="Locomotive" />
+          <NavigationProperty Name="Employee" Relationship="DbStationModel.FK_Employee_Brigade" FromRole="Brigade" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="CancelledTrip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRoute" Type="Int32" Nullable="false" />
+          <Property Name="IdTrain" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Route" Relationship="DbStationModel.FK_CancelledTrip_Route" FromRole="CancelledTrip" ToRole="Route" />
+          <NavigationProperty Name="Train" Relationship="DbStationModel.FK_CancelledTrip_Train" FromRole="CancelledTrip" ToRole="Train" />
+        </EntityType>
+        <EntityType Name="DelayedTrip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TicketsQuantity" Type="Int32" Nullable="false" />
+          <Property Name="IdRoute" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Route" Relationship="DbStationModel.FK_DelayedTrip_Route" FromRole="DelayedTrip" ToRole="Route" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="DbStationModel.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="Int32" Nullable="false" />
+          <Property Name="WorkExperience" Type="Int32" Nullable="false" />
+          <Property Name="IdBrigade" Type="Int32" Nullable="false" />
+          <Property Name="IdDepartment" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brigade" Relationship="DbStationModel.FK_Employee_Brigade" FromRole="Employee" ToRole="Brigade" />
+          <NavigationProperty Name="Department" Relationship="DbStationModel.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Inspection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfInspection" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LocomotiveAge" Type="Int32" Nullable="false" />
+          <Property Name="IdLocomotive" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Locomotive" Relationship="DbStationModel.FK_Inspection_Locomotive" FromRole="Inspection" ToRole="Locomotive" />
+        </EntityType>
+        <EntityType Name="Locomotive">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartureDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RouteQuantity" Type="Int32" Nullable="false" />
+          <Property Name="IdLocomotiveDriver" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Brigade" Relationship="DbStationModel.FK_Brigade_Locomotive" FromRole="Locomotive" ToRole="Brigade" />
+          <NavigationProperty Name="Inspection" Relationship="DbStationModel.FK_Inspection_Locomotive" FromRole="Locomotive" ToRole="Inspection" />
+          <NavigationProperty Name="LocomotiveDriver" Relationship="DbStationModel.FK_Locomotive_LocomotiveDriver" FromRole="Locomotive" ToRole="LocomotiveDriver" />
+          <NavigationProperty Name="Train" Relationship="DbStationModel.FK_Train_Locomotive" FromRole="Locomotive" ToRole="Train" />
+        </EntityType>
+        <EntityType Name="LocomotiveDriver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MedicalInspection" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <NavigationProperty Name="Locomotive" Relationship="DbStationModel.FK_Locomotive_LocomotiveDriver" FromRole="LocomotiveDriver" ToRole="Locomotive" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Baggage" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ticket" Relationship="DbStationModel.FK_Ticket_Passenger" FromRole="Passenger" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="DbStationModel.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeparturePlace" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ArrivalPlace" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdRouteCategory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CancelledTrip" Relationship="DbStationModel.FK_CancelledTrip_Route" FromRole="Route" ToRole="CancelledTrip" />
+          <NavigationProperty Name="DelayedTrip" Relationship="DbStationModel.FK_DelayedTrip_Route" FromRole="Route" ToRole="DelayedTrip" />
+          <NavigationProperty Name="RouteCategory" Relationship="DbStationModel.FK_Route_RouteCategory" FromRole="Route" ToRole="RouteCategory" />
+          <NavigationProperty Name="Ticket" Relationship="DbStationModel.FK_Ticket_Route" FromRole="Route" ToRole="Ticket" />
+          <NavigationProperty Name="Train" Relationship="DbStationModel.FK_Train_Route" FromRole="Route" ToRole="Train" />
+        </EntityType>
+        <EntityType Name="RouteCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Route" Relationship="DbStationModel.FK_Route_RouteCategory" FromRole="RouteCategory" ToRole="Route" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="ArePassed" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="AreUnbought" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="IdRoute" Type="Int32" Nullable="false" />
+          <Property Name="IdPassenger" Type="Int32" />
+          <NavigationProperty Name="Passenger" Relationship="DbStationModel.FK_Ticket_Passenger" FromRole="Ticket" ToRole="Passenger" />
+          <NavigationProperty Name="Route" Relationship="DbStationModel.FK_Ticket_Route" FromRole="Ticket" ToRole="Route" />
+        </EntityType>
+        <EntityType Name="Train">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrainNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="DepartureDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdRoute" Type="Int32" Nullable="false" />
+          <Property Name="IdLocomotive" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CancelledTrip" Relationship="DbStationModel.FK_CancelledTrip_Train" FromRole="Train" ToRole="CancelledTrip" />
+          <NavigationProperty Name="Locomotive" Relationship="DbStationModel.FK_Train_Locomotive" FromRole="Train" ToRole="Locomotive" />
+          <NavigationProperty Name="Route" Relationship="DbStationModel.FK_Train_Route" FromRole="Train" ToRole="Route" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="DbStationModel.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Brigade_Locomotive">
+          <End Type="DbStationModel.Locomotive" Role="Locomotive" Multiplicity="1" />
+          <End Type="DbStationModel.Brigade" Role="Brigade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locomotive">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Brigade">
+              <PropertyRef Name="IdLocomotive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Brigade">
+          <End Type="DbStationModel.Brigade" Role="Brigade" Multiplicity="1" />
+          <End Type="DbStationModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brigade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdBrigade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CancelledTrip_Route">
+          <End Type="DbStationModel.Route" Role="Route" Multiplicity="1" />
+          <End Type="DbStationModel.CancelledTrip" Role="CancelledTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CancelledTrip">
+              <PropertyRef Name="IdRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CancelledTrip_Train">
+          <End Type="DbStationModel.Train" Role="Train" Multiplicity="1" />
+          <End Type="DbStationModel.CancelledTrip" Role="CancelledTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Train">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CancelledTrip">
+              <PropertyRef Name="IdTrain" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DelayedTrip_Route">
+          <End Type="DbStationModel.Route" Role="Route" Multiplicity="1" />
+          <End Type="DbStationModel.DelayedTrip" Role="DelayedTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DelayedTrip">
+              <PropertyRef Name="IdRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Department">
+          <End Type="DbStationModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="DbStationModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inspection_Locomotive">
+          <End Type="DbStationModel.Locomotive" Role="Locomotive" Multiplicity="1" />
+          <End Type="DbStationModel.Inspection" Role="Inspection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locomotive">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inspection">
+              <PropertyRef Name="IdLocomotive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locomotive_LocomotiveDriver">
+          <End Type="DbStationModel.LocomotiveDriver" Role="LocomotiveDriver" Multiplicity="1" />
+          <End Type="DbStationModel.Locomotive" Role="Locomotive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocomotiveDriver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Locomotive">
+              <PropertyRef Name="IdLocomotiveDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Train_Locomotive">
+          <End Type="DbStationModel.Locomotive" Role="Locomotive" Multiplicity="1" />
+          <End Type="DbStationModel.Train" Role="Train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locomotive">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Train">
+              <PropertyRef Name="IdLocomotive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Passenger">
+          <End Type="DbStationModel.Passenger" Role="Passenger" Multiplicity="0..1" />
+          <End Type="DbStationModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IdPassenger" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Type="DbStationModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="DbStationModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Route_RouteCategory">
+          <End Type="DbStationModel.RouteCategory" Role="RouteCategory" Multiplicity="1" />
+          <End Type="DbStationModel.Route" Role="Route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RouteCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Route">
+              <PropertyRef Name="IdRouteCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Route">
+          <End Type="DbStationModel.Route" Role="Route" Multiplicity="1" />
+          <End Type="DbStationModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="IdRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Train_Route">
+          <End Type="DbStationModel.Route" Role="Route" Multiplicity="1" />
+          <End Type="DbStationModel.Train" Role="Train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Train">
+              <PropertyRef Name="IdRoute" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DbStationModelContainer" CdmEntityContainer="DbStationEntities">
+          <EntitySetMapping Name="Brigade">
+            <EntityTypeMapping TypeName="DbStationModel.Brigade">
+              <MappingFragment StoreEntitySet="Brigade">
+                <ScalarProperty Name="IdLocomotive" ColumnName="IdLocomotive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CancelledTrip">
+            <EntityTypeMapping TypeName="DbStationModel.CancelledTrip">
+              <MappingFragment StoreEntitySet="CancelledTrip">
+                <ScalarProperty Name="IdTrain" ColumnName="IdTrain" />
+                <ScalarProperty Name="IdRoute" ColumnName="IdRoute" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DelayedTrip">
+            <EntityTypeMapping TypeName="DbStationModel.DelayedTrip">
+              <MappingFragment StoreEntitySet="DelayedTrip">
+                <ScalarProperty Name="IdRoute" ColumnName="IdRoute" />
+                <ScalarProperty Name="TicketsQuantity" ColumnName="TicketsQuantity" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="DbStationModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="DbStationModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
+                <ScalarProperty Name="IdBrigade" ColumnName="IdBrigade" />
+                <ScalarProperty Name="WorkExperience" ColumnName="WorkExperience" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inspection">
+            <EntityTypeMapping TypeName="DbStationModel.Inspection">
+              <MappingFragment StoreEntitySet="Inspection">
+                <ScalarProperty Name="IdLocomotive" ColumnName="IdLocomotive" />
+                <ScalarProperty Name="LocomotiveAge" ColumnName="LocomotiveAge" />
+                <ScalarProperty Name="DateOfInspection" ColumnName="DateOfInspection" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locomotive">
+            <EntityTypeMapping TypeName="DbStationModel.Locomotive">
+              <MappingFragment StoreEntitySet="Locomotive">
+                <ScalarProperty Name="IdLocomotiveDriver" ColumnName="IdLocomotiveDriver" />
+                <ScalarProperty Name="RouteQuantity" ColumnName="RouteQuantity" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocomotiveDriver">
+            <EntityTypeMapping TypeName="DbStationModel.LocomotiveDriver">
+              <MappingFragment StoreEntitySet="LocomotiveDriver">
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MedicalInspection" ColumnName="MedicalInspection" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passenger">
+            <EntityTypeMapping TypeName="DbStationModel.Passenger">
+              <MappingFragment StoreEntitySet="Passenger">
+                <ScalarProperty Name="Baggage" ColumnName="Baggage" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="DbStationModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Route">
+            <EntityTypeMapping TypeName="DbStationModel.Route">
+              <MappingFragment StoreEntitySet="Route">
+                <ScalarProperty Name="IdRouteCategory" ColumnName="IdRouteCategory" />
+                <ScalarProperty Name="ArrivalPlace" ColumnName="ArrivalPlace" />
+                <ScalarProperty Name="DeparturePlace" ColumnName="DeparturePlace" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RouteCategory">
+            <EntityTypeMapping TypeName="DbStationModel.RouteCategory">
+              <MappingFragment StoreEntitySet="RouteCategory">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DbStationModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="DbStationModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="IdPassenger" ColumnName="IdPassenger" />
+                <ScalarProperty Name="IdRoute" ColumnName="IdRoute" />
+                <ScalarProperty Name="AreUnbought" ColumnName="AreUnbought" />
+                <ScalarProperty Name="ArePassed" ColumnName="ArePassed" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Train">
+            <EntityTypeMapping TypeName="DbStationModel.Train">
+              <MappingFragment StoreEntitySet="Train">
+                <ScalarProperty Name="IdLocomotive" ColumnName="IdLocomotive" />
+                <ScalarProperty Name="IdRoute" ColumnName="IdRoute" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TrainNumber" ColumnName="TrainNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DbStationModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

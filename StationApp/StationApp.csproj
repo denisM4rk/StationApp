@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D5E8F0EC-9AA7-4284-A9CE-6A1B91A6835D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>StationApp</RootNamespace>
+    <AssemblyName>StationApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppFiles\Brigade.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\CancelledTrip.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\DbConnect.cs" />
+    <Compile Include="AppFiles\DelayedTrip.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Department.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Employee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\FrameApp.cs" />
+    <Compile Include="AppFiles\Inspection.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Locomotive.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\LocomotiveDriver.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Passenger.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Route.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\RouteCategory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Ticket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\Train.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppFiles\User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\Admin\AddBrigadePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddCancelledTripPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddDelayedTripPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddDepartmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddDriverPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddEmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddInspectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddLocomotivePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddPassengerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddRoutePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddTicketsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddTrainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\AddUsersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\BrigadePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\CancelledTripsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\DelayedTripPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\EmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\InspectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\LocomotiveDriversPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\LocomotivePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\MainAdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\PassedTicketsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\PassengersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\RoutePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\TicketsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\TrainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\UnboughtTicketsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\UsersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\BrigadeCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\CancelledTripPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\DelayedTripCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\EmployeeCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\InspectionCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\LocomotiveCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\LocomotiveDriversCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\MainDirectorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\PassedTicketsCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\PassengersCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\RouteCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\TicketsCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\TrainCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Director\UnboughtTicketsCheckPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Guest\MainGuestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\Admin\AddBrigadePage.xaml.cs">
+      <DependentUpon>AddBrigadePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddCancelledTripPage.xaml.cs">
+      <DependentUpon>AddCancelledTripPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddDelayedTripPage.xaml.cs">
+      <DependentUpon>AddDelayedTripPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddDepartmentPage.xaml.cs">
+      <DependentUpon>AddDepartmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddDriverPage.xaml.cs">
+      <DependentUpon>AddDriverPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddEmployeePage.xaml.cs">
+      <DependentUpon>AddEmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddInspectionPage.xaml.cs">
+      <DependentUpon>AddInspectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddLocomotivePage.xaml.cs">
+      <DependentUpon>AddLocomotivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddPassengerPage.xaml.cs">
+      <DependentUpon>AddPassengerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddRoutePage.xaml.cs">
+      <DependentUpon>AddRoutePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddTicketsPage.xaml.cs">
+      <DependentUpon>AddTicketsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddTrainPage.xaml.cs">
+      <DependentUpon>AddTrainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\AddUsersPage.xaml.cs">
+      <DependentUpon>AddUsersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\BrigadePage.xaml.cs">
+      <DependentUpon>BrigadePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\CancelledTripsPage.xaml.cs">
+      <DependentUpon>CancelledTripsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\DelayedTripPage.xaml.cs">
+      <DependentUpon>DelayedTripPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\EmployeePage.xaml.cs">
+      <DependentUpon>EmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\InspectionPage.xaml.cs">
+      <DependentUpon>InspectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\LocomotiveDriversPage.xaml.cs">
+      <DependentUpon>LocomotiveDriversPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\LocomotivePage.xaml.cs">
+      <DependentUpon>LocomotivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\MainAdminPage.xaml.cs">
+      <DependentUpon>MainAdminPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\PassedTicketsPage.xaml.cs">
+      <DependentUpon>PassedTicketsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\PassengersPage.xaml.cs">
+      <DependentUpon>PassengersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\RoutePage.xaml.cs">
+      <DependentUpon>RoutePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\TicketsPage.xaml.cs">
+      <DependentUpon>TicketsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\TrainPage.xaml.cs">
+      <DependentUpon>TrainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\UnboughtTicketsPage.xaml.cs">
+      <DependentUpon>UnboughtTicketsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AuthorizationPage.xaml.cs">
+      <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\BrigadeCheckPage.xaml.cs">
+      <DependentUpon>BrigadeCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\CancelledTripPage.xaml.cs">
+      <DependentUpon>CancelledTripPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\DelayedTripCheckPage.xaml.cs">
+      <DependentUpon>DelayedTripCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\EmployeeCheckPage.xaml.cs">
+      <DependentUpon>EmployeeCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\InspectionCheckPage.xaml.cs">
+      <DependentUpon>InspectionCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\LocomotiveCheckPage.xaml.cs">
+      <DependentUpon>LocomotiveCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\LocomotiveDriversCheckPage.xaml.cs">
+      <DependentUpon>LocomotiveDriversCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\MainDirectorPage.xaml.cs">
+      <DependentUpon>MainDirectorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\PassedTicketsCheckPage.xaml.cs">
+      <DependentUpon>PassedTicketsCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\PassengersCheckPage.xaml.cs">
+      <DependentUpon>PassengersCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\RouteCheckPage.xaml.cs">
+      <DependentUpon>RouteCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\TicketsCheckPage.xaml.cs">
+      <DependentUpon>TicketsCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\TrainCheckPage.xaml.cs">
+      <DependentUpon>TrainCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Director\UnboughtTicketsCheckPage.xaml.cs">
+      <DependentUpon>UnboughtTicketsCheckPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Guest\MainGuestPage.xaml.cs">
+      <DependentUpon>MainGuestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="AppFiles\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AppFiles\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="AppFiles\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="AppFiles\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

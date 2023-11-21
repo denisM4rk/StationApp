@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7937344f6221474d84e6080d25ae704a" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="DbStationModel.Brigade" Width="1.5" PointX="8.25" PointY="1.25" />
+        <EntityTypeShape EntityType="DbStationModel.CancelledTrip" Width="1.5" PointX="10.5" PointY="6.625" />
+        <EntityTypeShape EntityType="DbStationModel.DelayedTrip" Width="1.5" PointX="5.25" PointY="16.5" />
+        <EntityTypeShape EntityType="DbStationModel.Department" Width="1.5" PointX="8.25" PointY="13.375" />
+        <EntityTypeShape EntityType="DbStationModel.Employee" Width="1.5" PointX="10.5" PointY="0.75" />
+        <EntityTypeShape EntityType="DbStationModel.Inspection" Width="1.5" PointX="8.25" PointY="10" />
+        <EntityTypeShape EntityType="DbStationModel.Locomotive" Width="1.5" PointX="6" PointY="2.25" />
+        <EntityTypeShape EntityType="DbStationModel.LocomotiveDriver" Width="1.5" PointX="3.75" PointY="2.5" />
+        <EntityTypeShape EntityType="DbStationModel.Passenger" Width="1.5" PointX="3" PointY="10.5" />
+        <EntityTypeShape EntityType="DbStationModel.Role" Width="1.5" PointX="10.75" PointY="10.375" />
+        <EntityTypeShape EntityType="DbStationModel.Route" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="DbStationModel.RouteCategory" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DbStationModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="DbStationModel.Ticket" Width="1.5" PointX="5.25" PointY="6.25" />
+        <EntityTypeShape EntityType="DbStationModel.Train" Width="1.5" PointX="8.25" PointY="6.125" />
+        <EntityTypeShape EntityType="DbStationModel.User" Width="1.5" PointX="13" PointY="10.125" />
+        <AssociationConnector Association="DbStationModel.FK_Brigade_Locomotive" />
+        <AssociationConnector Association="DbStationModel.FK_Employee_Brigade" />
+        <AssociationConnector Association="DbStationModel.FK_CancelledTrip_Route" />
+        <AssociationConnector Association="DbStationModel.FK_CancelledTrip_Train" />
+        <AssociationConnector Association="DbStationModel.FK_DelayedTrip_Route" />
+        <AssociationConnector Association="DbStationModel.FK_Employee_Department" />
+        <AssociationConnector Association="DbStationModel.FK_Inspection_Locomotive" />
+        <AssociationConnector Association="DbStationModel.FK_Locomotive_LocomotiveDriver" />
+        <AssociationConnector Association="DbStationModel.FK_Train_Locomotive" />
+        <AssociationConnector Association="DbStationModel.FK_Ticket_Passenger" />
+        <AssociationConnector Association="DbStationModel.FK_User_Role" />
+        <AssociationConnector Association="DbStationModel.FK_Route_RouteCategory" />
+        <AssociationConnector Association="DbStationModel.FK_Ticket_Route" />
+        <AssociationConnector Association="DbStationModel.FK_Train_Route" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

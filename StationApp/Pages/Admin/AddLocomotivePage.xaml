@@ -1,0 +1,33 @@
+﻿<Page x:Class="StationApp.Pages.Admin.AddLocomotivePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StationApp.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Добавление локомотива">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Column="0" Margin="10" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Водитель:</TextBlock>
+            <ComboBox Name="CmbDriver"  Style="{StaticResource FiltrationBox}" Width="auto" Margin="10"></ComboBox>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Дата прибытия:</TextBlock>
+            <DatePicker Name="DeparturePicker" Width="auto" Margin="10"></DatePicker>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Дата отправления:</TextBlock>
+            <DatePicker Name="ArrivalPicker" Width="auto" Margin="10"></DatePicker>
+            <TextBlock Style="{StaticResource AuthorizationTextBlock}" Width="auto" FontSize="20">Количество маршрутов:</TextBlock>
+            <TextBox Name="TxbQuantity" Style="{StaticResource AuthorizationBox}" Width="auto" Margin="10"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <Button Name="BtnAddLocomotive" Click="BtnAddLocomotive_Click" Style="{StaticResource Button}">Добавить данные</Button>
+            <Button Name="BtnBack" Click="BtnBack_Click" Style="{StaticResource Button}">Назад</Button>
+        </StackPanel>
+    </Grid>
+</Page>
